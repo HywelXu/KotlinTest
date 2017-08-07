@@ -1,11 +1,10 @@
 package org.hywel.kotlintest.ui
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_details.*
+import org.hywel.kotlintest.KotApplication
 import org.hywel.kotlintest.R
 
 class DetailsActivity : AppCompatActivity() {
@@ -21,29 +20,23 @@ class DetailsActivity : AppCompatActivity() {
 //        val avatarUrl = data.getString("avatarUrl")
         val imgUrl = data.getString("imgUrl")
 
-        //设置字体
-        val tfAuthorFromAsset = Typeface.createFromAsset(assets, "fonts/Luminari.ttf")
-        val tfContentFromAsset = Typeface.createFromAsset(assets, "fonts/Bradley Hand Bold.ttf")
-//        val tfTimeFromAsset = Typeface.createFromAsset(assets, "fonts/tesla.ttf")
-        val tfTimeFromAsset = Typeface.createFromAsset(assets, "fonts/Brush Script.ttf")
+        val kotApplication = KotApplication
 
+        //设置标题
         collapsing_toolbar_layout.title = author
-        collapsing_toolbar_layout.setCollapsedTitleTypeface(tfAuthorFromAsset)
-//        detail_tv_author.text = author
-//        detail_tv_author.typeface = tfAuthorFromAsset
+        collapsing_toolbar_layout.setCollapsedTitleTypeface(kotApplication.mLuminariTypeface)
 
+        //设置内容
 //        val largeText = resources.getText(R.string.large_text1)
         detail_tv_content.text = content
-        detail_tv_content.typeface = tfContentFromAsset
+        detail_tv_content.typeface = kotApplication.mBradleyTypeface
 
+        //设置时间
         detail_tv_time.text = time
-        detail_tv_time.typeface = tfTimeFromAsset
+        detail_tv_time.typeface = kotApplication.mBrushTypeface
 
-        tv_back.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(p0: View?) {
-                onBackPressed()
-            }
-        })
+        tv_back.setOnClickListener { onBackPressed() }
+
 //        val screenWidth = AndroidTools.getScreenWidth(this)
 //        val imgWidth: Int = screenWidth
 //        val imgHeight: Int = screenWidth * 9 / 16

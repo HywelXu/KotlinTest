@@ -1,13 +1,13 @@
 package org.hywel.kotlintest.adapter
 
 import android.content.Context
-import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fanfou_item_layout.view.*
+import org.hywel.kotlintest.KotApplication
 import org.hywel.kotlintest.R
 import org.hywel.kotlintest.data.MainRVData
 import org.hywel.kotlintest.interf.OnRecyclerViewOnClickListener
@@ -21,12 +21,9 @@ class MainRVAdapter(val context: Context, val list: List<MainRVData>) : Recycler
 
     private var mListener: OnRecyclerViewOnClickListener? = null
 
-    var layoutPosition = 0
+    val kotApplication = KotApplication
 
-    val tfAuthorFromAsset = Typeface.createFromAsset(context.assets, "fonts/Luminari.ttf")!!
-    val tfContentFromAsset = Typeface.createFromAsset(context.assets, "fonts/Bradley Hand Bold.ttf")!!
-    //        val tfTimeFromAsset = Typeface.createFromAsset(assets, "fonts/tesla.ttf")
-    val tfTimeFromAsset = Typeface.createFromAsset(context.assets, "fonts/Brush Script.ttf")!!
+    var layoutPosition = 0
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         layoutPosition = position
@@ -40,14 +37,15 @@ class MainRVAdapter(val context: Context, val list: List<MainRVData>) : Recycler
             holder.itemView.iv_main.visibility = View.INVISIBLE
         }
 
+        //作者
         holder.itemView.tv_author.text = item.author
-        holder.itemView.tv_author.typeface = tfAuthorFromAsset
-
+        holder.itemView.tv_author.typeface = kotApplication.mLuminariTypeface
+        //内容
         holder.itemView.tv_content.text = android.text.Html.fromHtml(item.content).toString()
-        holder.itemView.tv_content.typeface = tfContentFromAsset
-
+        holder.itemView.tv_content.typeface = kotApplication.mBradleyTypeface
+        //时间
         holder.itemView.tv_time.text = item.time
-        holder.itemView.tv_time.typeface = tfTimeFromAsset
+        holder.itemView.tv_time.typeface = kotApplication.mBrushTypeface
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {

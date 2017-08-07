@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".KotlinApplication"
+        android:name=".KotApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,8 +25,8 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_main_page_label_text"
-            android:launchMode="singleTask"
-            android:theme="@style/AppMainTheme" />
+            android:launchMode="singleTask" />
+        <!--android:theme="@style/AppMainTheme"-->
         <activity
             android:name=".ui.DetailsActivity"
             android:label="@string/app_rv_detail_page_label_text"

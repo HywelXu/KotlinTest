@@ -3,11 +3,12 @@ package org.hywel.kotlintest.utils
 import android.content.Context
 import android.net.Uri
 import android.widget.ImageView
-
 import com.bumptech.glide.Glide
-import com.flaviofaria.kenburnsview.KenBurnsView
 import com.youth.banner.loader.ImageLoader
 
+/**
+ * Banner 库图片加载器
+ */
 class GlideImageLoader : ImageLoader() {
     override fun displayImage(context: Context, path: Any, imageView: ImageView) {
         /**

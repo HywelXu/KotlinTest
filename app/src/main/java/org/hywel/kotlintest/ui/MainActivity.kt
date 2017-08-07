@@ -8,6 +8,7 @@ import android.view.View
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_main.*
+import org.hywel.kotlintest.KotApplication
 import org.hywel.kotlintest.R
 import org.hywel.kotlintest.adapter.MainRVAdapter
 import org.hywel.kotlintest.data.MainRVData
@@ -23,21 +24,35 @@ class MainActivity : AppCompatActivity() {
 
     private var mMainDataList = ArrayList<MainRVData>()
 
+    val kotApplication = KotApplication
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        setBanner()
+
+        setTitle()
+        setBanner()
         setRecyclerView()
+    }
+
+    /**
+     * 设置标题
+     */
+    private fun setTitle() {
+        val mainTitle = resources.getText(R.string.app_main_page_label_text)
+
+        main_collapsing_toolbar_layout.title = mainTitle
+        main_collapsing_toolbar_layout.setCollapsedTitleTypeface(kotApplication.mLuminariTypeface)
     }
 
     /**
      * 设置 RecyclerView
      */
     private fun setRecyclerView() {
-        mMainDataList.getData()
+        getData()
 
-        mMainRecyclerView.layoutManager = LinearLayoutManager(this)
+        mMainRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
         mMainRVAdapter = MainRVAdapter(this, mMainDataList)
         mMainRecyclerView.adapter = mMainRVAdapter
         mMainRVAdapter!!.setItemClickListener(object : OnRecyclerViewOnClickListener {
@@ -81,7 +96,9 @@ class MainActivity : AppCompatActivity() {
         banner.stopAutoPlay()
     }
 
-
+    /**
+     * 跳转到详情页
+     */
     private fun jumpDetail(position: Int) {
         val intent = Intent(this@MainActivity, DetailsActivity::class.java)
         val item = mMainDataList[position]
@@ -95,7 +112,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun ArrayList<MainRVData>.getData() {
+    fun getData() {
 
         val author = resources.getText(R.string.author_text)
         val content = resources.getText(R.string.large_text)

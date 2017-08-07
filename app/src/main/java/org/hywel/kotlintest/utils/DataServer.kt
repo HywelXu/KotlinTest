@@ -4,6 +4,9 @@ package org.hywel.kotlintest.utils
  * Created by hywel on 2017/8/1.
  */
 class DataServer {
+    /**
+     * 焦点图标题
+     */
     var BANNER_TITLES: Array<String> = arrayOf(
             "KAVIN",
             "AIVALE",
@@ -12,7 +15,9 @@ class DataServer {
             "TAYLOR"
     )
 
-
+    /**
+     * 焦点图图片
+     */
     var BANNER_IMAGES: Array<String> = arrayOf(
             "http://img1.imgtn.bdimg.com/it/u=1022773221,54015106&fm=23&gp=0.jpg",
             "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1355292914,2241442181&fm=23&gp=0.jpg",
@@ -20,7 +25,9 @@ class DataServer {
             "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=495037904,1307473326&fm=23&gp=0.jpg",
             "http://img1.imgtn.bdimg.com/it/u=4245942137,2249219676&fm=23&gp=0.jpg"
     )
-
+    /**
+     * 图片资源
+     */
     var IMG: Array<String> = arrayOf(
 
             "http://img1.imgtn.bdimg.com/it/u=1022773221,54015106&fm=23&gp=0.jpg",

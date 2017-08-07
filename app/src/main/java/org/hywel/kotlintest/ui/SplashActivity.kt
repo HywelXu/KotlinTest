@@ -4,11 +4,11 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.animation.AnticipateOvershootInterpolator
 import kotlinx.android.synthetic.main.activity_splash.*
+import org.hywel.kotlintest.KotApplication
 import org.hywel.kotlintest.R
 
 class SplashActivity : AppCompatActivity() {
@@ -17,8 +17,10 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val tfAuthorFromAsset = Typeface.createFromAsset(assets, "fonts/Luminari.ttf")!!
-        text_name.typeface = tfAuthorFromAsset
+        val kotApplication = KotApplication
+
+//        val tfAuthorFromAsset = Typeface.createFromAsset(assets, "fonts/Luminari.ttf")!!
+        text_name.typeface = kotApplication.mLuminariTypeface
 
         startAnim()
     }
