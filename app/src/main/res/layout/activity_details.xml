@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorPrimary">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:collapsedTitleGravity="center_horizontal"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="center"
+            app:expandedTitleMarginTop="140dp"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <TextView
+                android:id="@+id/detail_tv_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/author_text"
+                android:textColor="@color/colorTextBlackSoft"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/detail_iv_main"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@+id/tv_author"
+                android:contentDescription="@string/detail_avatar_img"
+                android:scaleType="fitXY"
+                android:src="@mipmap/gyy" />
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_collapseMode="pin">
+
+                <TextView
+                    android:id="@+id/tv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:drawableLeft="@drawable/arrow_left"
+                    android:drawableStart="@drawable/arrow_left"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlackSoft" />
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:orientation="vertical"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/detail_tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/colorTextGrayDark" />
+
+                <TextView
+                    android:id="@+id/detail_tv_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="start"
+                    android:textColor="@color/colorTextGraySoft"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
