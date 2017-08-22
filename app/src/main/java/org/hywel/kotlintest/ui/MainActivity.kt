@@ -1,6 +1,9 @@
 package org.hywel.kotlintest.ui
 
 import android.content.Intent
+import android.media.AudioManager
+import android.media.SoundPool
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -22,6 +25,10 @@ class MainActivity : AppCompatActivity() {
 
     private var mMainRVAdapter: MainRVAdapter? = null
 
+    private lateinit var mSoundPool: SoundPool
+
+    private var mSoundId: Int = 0
+
     private var mMainDataList = ArrayList<MainRVData>()
 
     val kotApplication = KotApplication
@@ -31,9 +38,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        initSound()
         setTitle()
         setBanner()
         setRecyclerView()
+    }
+
+    /**
+     * 初始化 SoundPool
+     */
+    private fun initSound() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        mSoundPool = SoundPool.Builder().build()
+        mSoundId = mSoundPool.load(this, R.raw.lock, 1)
+    } else {
+        mSoundPool = SoundPool(5, AudioManager.STREAM_MUSIC, 0)
+    }
+
+    /**
+     * 播放声音
+     */
+    private fun playSound() {
+        mSoundPool.play(mSoundId, 0.1f, 0.5f, 0, 0, 1f)
     }
 
     /**
@@ -58,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         mMainRVAdapter!!.setItemClickListener(object : OnRecyclerViewOnClickListener {
             override fun OnItemClick(v: View, position: Int) {
                 jumpDetail(position)
+                playSound()
                 //                Toast.makeText(this@MainActivity, "Name: " + mMainDataList[position].author, Toast.LENGTH_SHORT).show()
             }
         })
